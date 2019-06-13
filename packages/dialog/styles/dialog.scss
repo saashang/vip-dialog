@@ -1,0 +1,171 @@
+$borderRadius: 2px;
+div.v-dialog {
+    position: fixed;
+    top: 0;right: 0;bottom: 0;left: 0;
+    z-index: 1050;
+    overflow: hidden;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+
+    &.v-dialog-open { overflow: hidden; }
+    /* Window maximize */
+    &.v-dialog--maximize {
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        padding-right: 0 !important;
+        div.v-dialog-dialog { width: 100% !important;height: 100% !important; }
+        div.v-dialog-content {
+            height: 100% !important;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+        div.v-dialog-header { background-color: #eee; }
+    }
+    div.v-dialog-dialog { position: relative;margin: 0 auto;width: 100%; }
+    div.v-dialog-content {
+        outline: 0;
+        position: relative;
+        background-color: white;
+
+        -webkit-box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        -moz-box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+
+        -webkit-border-radius: $borderRadius;
+        -moz-border-radius: $borderRadius;
+        border-radius: $borderRadius;
+        border: 0;
+        overflow: hidden;
+    }
+    div.v-dialog-header {
+        padding: 0;border-bottom: 0;
+        /*background-color: #EEEEEE;*/
+        h3 { margin: 0;line-height: 42px;height: 42px;font-size: 18px;padding-left: 15px; }
+        button{
+            -webkit-transition: all .5s cubic-bezier(.175,.885,.32,1);
+            transition: all .5s cubic-bezier(.175,.885,.32,1);
+            height: 42px;
+            width: 60px;
+            text-shadow: none;
+            outline: none !important;
+            margin: 0;
+            opacity: 0.3;
+            font-size: 22px !important;
+            float: right;
+            border: 0;
+            background-color: transparent;
+            &:hover { opacity: 1; }
+            &.v-dialog-btn__close { font-weight: normal; }
+            &.v-dialog-btn__close:hover { background-color: #E81123;color: white; }
+            &.v-dialog-btn__maximize {
+                /*margin-right: 7px;*/
+                /*margin-top: 2px;*/
+                &:hover { background-color: #E0E0E0; }
+            }
+            i { font-weight: 600;font-size: 22px; }
+        }
+    }
+    div.v-dialog-body {
+        position: relative;
+        width: 100%;
+        padding: 0;
+        overflow: auto;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+    &.fullWidth {
+        width: 100%;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        padding-right: 0;
+        div.v-dialog-header {
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            background-color: white;
+            border-bottom: 0;
+            h3 { text-align: center; }
+        }
+        div.v-dialog-content { -webkit-border-radius: 0;-moz-border-radius: 0;border-radius: 0; }
+    }
+}
+
+/* modal */
+.v-dialog-modal .v-dialog-body {
+    padding: 15px !important;
+}
+
+div.v-dialog-overlay {
+    position: fixed;
+    top: 0;right: 0;bottom: 0;left: 0;
+    z-index: 1040;
+    opacity: 0.5;
+    background-color: black;
+}
+
+/* css animate */
+@-webkit-keyframes timerhand{
+    0%{ transform: rotate(0deg);-webkit-transform: rotate(0deg); }
+    100%{ transform: rotate(360deg);-webkit-transform: rotate(360deg); }
+}
+@-moz-keyframes timerhand{
+    0%{ transform: rotate(0deg);-webkit-transform: rotate(0deg); }
+    100%{ transform: rotate(360deg);-webkit-transform: rotate(360deg); }
+}
+@-o-keyframes timerhand{
+    0%{ transform: rotate(0deg);-webkit-transform: rotate(0deg); }
+    100%{ transform: rotate(360deg);-webkit-transform: rotate(360deg); }
+}
+@keyframes timerhand{
+    0%{ transform: rotate(0deg);-webkit-transform: rotate(0deg); }
+    100%{ transform: rotate(360deg);-webkit-transform: rotate(360deg); }
+}
+/* model, alert, mask show up animated */
+.v-dialog--candy-enter-active {
+    will-change: transform;
+    -webkit-animation-duration: 300ms;
+    animation-duration: 300ms;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: animated-dialog-open;
+    animation-name: animated-dialog-open;
+}
+.v-dialog--candy-leave-active{
+    /*
+    will-change: transform;
+    animation-duration: 300ms;
+    animation-timing-function: ease-in-out;
+    animation-name: animated-dialog-open;
+    animation-direction: reverse;
+    */
+    will-change: transform, opacity;
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    -webkit-transition: transform 200ms ease, opacity 200ms ease;
+    -moz-transition: transform 200ms ease, opacity 200ms ease;
+    transition: transform 200ms ease, opacity 200ms ease;
+    opacity: 0;
+}
+
+.v-dialog--smooth-enter,
+.v-dialog--smooth-leave-to {
+    will-change: transform, opacity;
+    -webkit-transform: scale(0.5);
+    transform: scale(0.5);
+    opacity: 0;
+    -webkit-transition: transform 200ms ease, opacity 200ms ease;
+    transition: transform 200ms ease, opacity 200ms ease;
+}
+
+.v-dialog--smooth-enter-to,
+.v-dialog--smooth-leave {
+    will-change: transform, opacity;
+    opacity: 1;
+    -webkit-transition: transform 250ms ease, opacity 250ms ease;
+    transition: transform 250ms ease, opacity 250ms ease;
+}

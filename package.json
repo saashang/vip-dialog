@@ -1,0 +1,30 @@
+{
+  "name": "vip-dialog",
+  "version": "0.1.0",
+  "main": "lib/vip-dialog.umd.min.js",
+  "private": false,
+  "license": "MIT",
+  "author": "saa.shang <saashang@163.com>",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name vip-dialog --dest lib packages/dialog/js/index.js"
+  },
+  "dependencies": {
+    "vue": "^2.5.17",
+    "element-ui": "^2.6.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.4",
+    "@vue/cli-plugin-eslint": "^3.0.4",
+    "@vue/cli-service": "^3.0.4",
+    "@vue/eslint-config-standard": "^4.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1",
+    "vue-template-compiler": "^2.5.17"
+  }
+}
